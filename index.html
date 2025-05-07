@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Саванна в A-Frame</title>
+    <title>projet A-Frame</title>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.3.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <style>
       .grass {
         position: absolute;
@@ -24,44 +25,46 @@
     </style>
 </head>
 <body>
+
   <a-assets>
     <img id="sandTexture" src="resources/textures/sand.jpg">
-</a-assets>
-    <a-scene>
-        <a-entity id="environment" environment="preset: default;
-                          skyColor: #FFD700;  
-                          horizonColor: #FFA500;
-                          sunPosition: 0 0 0; 
-                          fog: 0.8 100 500; 
-                          groundColor: #B8860B;
-                          groundColor2: #A0522D;
-                          dressing: grass;
-                          dressingAmount: 200;
-                          dressingVariance: 10 5 10;
-                          dressingScale: 4 1 4;
-                          lightPosition: 0.5 0 -0.5"></a-entity>
+    <a-asset-item id="free_acacia_african" src="resources/free_acacia_african/scene.gltf"></a-asset-item>
+    <a-asset-item id="real_bush" src="resources/real_bush/scene.gltf"></a-asset-item>
+    <a-asset-item id="zebra" src="https://cdn.glitch.com/ваш-glitch-url/zebra.gltf"></a-asset-item>
+    <a-asset-item id="lion" src="resources/lion/scene.gltf"></a-asset-item>
+    <a-asset-item id="free_pack_-_rocks_stylized" src="resources/free_pack_-_rocks_stylized/scene.gltf"></a-asset-item>
+    <a-asset-item id="hut" src="resources/hut/scene.gltf"></a-asset-item>
+    <a-asset-item id="water_animation" src="resources/water_animation/scene.gltf"></a-asset-item>
+    <a-asset-item id="cactus" src="resources/cactus/scene.gltf"></a-asset-item>
+    <a-asset-item id="sand" src="resources/sand/scene.gltf"></a-asset-item>
+    <a-asset-item id="baobabe" src="resources/baobabe/scene.gltf"></a-asset-item>
+    <a-asset-item id="old man" src="resources/old man/scene.gltf"></a-asset-item>
+    <audio id="voice1" src="resources/songs/voice1.mp3"></audio>
+    <a-asset-item id="torch" src="resources/torch/scene.gltf"></a-asset-item>
+    <a-asset-item id="elephant" src="resources/elephant/scene.gltf"></a-asset-item>
+    <a-asset-item id="boat" src="resources/boat/scene.gltf"></a-asset-item>
+    <a-asset-item id="champi" src="resources/champi/scene.gltf"></a-asset-item>
+    <a-asset-item id="grassModel" src="resources/grass/scene.gltf"></a-asset-item>
+    <a-asset-item id="vivi" src="resources/vivi/scene.gltf"></a-asset-item>
+    <a-asset-item id="house" src="resources/house/scene.gltf"></a-asset-item>
+    <a-asset-item id="walkingManModel" src="resources/indian_old_man_walking/scene.gltf"></a-asset-item>
+    <img id="cielTexture" src="ciel.jpg">
+  </a-assets>
 
-        <a-sky color="#FFD700"></a-sky> 
+    <a-scene id="scene1">
+      <a-camera position="-100 7 100" rotation="0 -30 0"></a-camera>
+      <a-entity id="environment" environment="preset: default;
+                            skyColor: blue;
+                            horizonColor: #FFD700;
+                            sunPosition: 0 0 0;
+                            fog: 0 false 0;
+                            groundColor: rgba(0,0,0,0);
+                            groundColor2: rgba(0,0,0,0);
+                            dressing: none;"></a-entity>
 
         <a-light type="directional" color="#FF8C00" intensity="0.8" position="0 1 0"></a-light>
         <a-light type="ambient" color="#FFA500" intensity="0.3"></a-light>
-
-        <a-assets>
-            <a-asset-item id="free_acacia_african" src="resources/free_acacia_african/scene.gltf"></a-asset-item>
-            <a-asset-item id="free_acacia_african" src="resources/free_acacia_african/scene.gltf"></a-asset-item>
-            <a-asset-item id="real_bush" src="resources/real_bush/scene.gltf"></a-asset-item>
-            <a-asset-item id="zebra" src="https://cdn.glitch.com/ваш-glitch-url/zebra.gltf"></a-asset-item>
-            <a-asset-item id="lion" src="resources/lion/scene.gltf"></a-asset-item>
-            <a-asset-item id="free_pack_-_rocks_stylized" src="resources/free_pack_-_rocks_stylized/scene.gltf"></a-asset-item>
-            <a-asset-item id="hut" src="resources/hut/scene.gltf"></a-asset-item>
-            <a-asset-item id="water_animation" src="resources/water_animation/scene.gltf"></a-asset-item>
-            <a-asset-item id="cactus" src="resources/cactus/scene.gltf"></a-asset-item>
-            <a-asset-item id="sand" src="resources/sand/scene.gltf"></a-asset-item>
-            <a-asset-item id="baobabe" src="resources/baobabe/scene.gltf"></a-asset-item>
-            <a-asset-item id="old man" src="resources/old man/scene.gltf"></a-asset-item>
-            <a-asset-item id="torch" src="resources/torch/scene.gltf"></a-asset-item>
-            <a-asset-item id="torch1" src="resources/torch1/scene.gltf"></a-asset-item>
-        </a-assets>
+        <a-plane id="customGround" src="#sandTexture" rotation="-90 0 0" width="200" height="200" repeat="10 10"></a-plane>
 
         <a-entity gltf-model="#free_acacia_african" position="0 0 -3" scale="0.2 0.2 0.2"></a-entity>
         <a-entity gltf-model="#free_acacia_african" position="-15 0 -3" scale="0.2 0.2 0.2"></a-entity>
@@ -70,30 +73,83 @@
         <a-entity gltf-model="#real_bush" position="-10 0 +15" scale="0.1 0.1 0.1"></a-entity>
         <a-entity gltf-model="#real_bush" position="10 0 -15" scale="0.060 0.060 0.060"></a-entity>
         <a-entity gltf-model="#real_bush" position="10 0 15" scale="0.060 0.060 0.060"></a-entity>
-        <a-entity gltf-model="#free_pack_-_rocks_stylized"position="10 0 -40" scale="10 10 10"></a-entity>
+        <a-entity gltf-model="#free_pack_-_rocks_stylized" position="10 0 -40" scale="10 10 10"></a-entity>
         <a-entity gltf-model="#hut" position="20 0 50" scale="2 2 2" rotation="0 180 0"></a-entity>
-        <a-entity gltf-model="#water_animation" position="20 0.2 25" scale="0.10 0.10 0.10" rotation="0 180 0" 
-          material="color: #0000FF; opacity: 0.7" animation-mixer></a-entity>
-        <a-entity gltf-model="#cactus" position="70 0 30" scale="5 2 2" rotation="0 180 0"></a-entity>
-        <a-entity gltf-model="#sand" position="0 0 0" scale="500 1.2 500" rotation="0 0 0"></a-entity>
-        <a-entity gltf-model="#baobabe" position="35 0 50" scale="0.010 0.010 0.010"></a-entity>
-        <a-entity gltf-model="#old man" position="35 0 40" scale="0.1 0.1 0.1" rotation="0 180 0"></a-entity>
-        <a-entity gltf-model="#torch" position="20 0 70" scale="5 5 5" rotation="0 180 0"></a-entity>
-        <a-entity gltf-model="#torch" position="30 0 90" scale="5 5 5" rotation="0 180 0"></a-entity>
-        
-        
-        <a-entity gltf-model="#lion" position="0 0 -3" scale="0.1 0.1 0.1"
-          animation-mixer="clip: Walk; loop: repeat"
-          animation-mixer__run="clip: Run; loop: repeat"
-          animation-mixer__head-turn="clip: HeadTurn; loop: repeat"
-          animation-mixer__tail="clip: TailWag; loop: repeat"
-          animation__position="property: position; to: 5 0 -3; dur: 4000; dir: alternate; loop: true"
-          animation__head="property: rotation; to: 0 10 0; dur: 1500; dir: alternate; loop: true"
-          sound="src: #lionRoar; autoplay: true; loop: true; volume: 1; on: roar"></a-entity>
+        <a-entity gltf-model="resources/water_animation/scene.gltf" position="-51.29685 0.88394 55.0288" scale="0.1 0.27626 0.1" rotation="0 180 0" material="opacity: 0.7; color: #0000FF" animation-mixer=""></a-entity>
+        <a-entity gltf-model="resources/water_animation/scene.gltf" position="33.74587 0.42075 20.22928" scale="0.1 0.27626 0.1" rotation="0 180 0" material="opacity: 0.7; color: #0000FF" animation-mixer=""></a-entity>
+        <a-entity gltf-model="#cactus" position="50 0 50" scale="5 2 2" rotation="0 180 0"></a-entity>
+        <a-entity gltf-model="resources/sand/scene.gltf" position="-0.19894 0.06112 30.13011" scale="500 1.2 500"></a-entity>
+        <a-entity gltf-model="#house" position="-6.86592 1.58616 41.46941" scale="1.95166 2.48614 1.95166" rotation="0 171.7704551490403 0"></a-entity>
 
-<a-assets>
-    <audio id="lionRoar" src="resources/lion/roar.mp3"></audio>
-</a-assets>
-    <div class="grass"></div>
-</body>
-</html>
+        <a-entity gltf-model="#baobabe" position="35 0 50" scale="0.010 0.010 0.010"></a-entity>
+        <a-entity gltf-model="#old man" position="35 1 40" scale="0.1 0.1 0.1" rotation="0 180 0" animation-mixer></a-entity>
+        <a-entity id="monBateau" gltf-model="#modeleBateau" position="0 0 -5" scale="1 1 1"></a-entity>
+        <a-entity id="monChampi" gltf-model="#modeleChampi" position="1.07081 2.78591 2.52563" scale="2.06818 2.06818 2.06818"></a-entity>
+        <a-entity gltf-model="#torch" position="15 0 35" scale="5 5 5" rotation="0 180 0"></a-entity>
+        <a-entity gltf-model="#torch" position="25 0 35" scale="5 5 5" rotation="0 180 0"></a-entity>
+
+        <a-entity gltf-model="#free_acacia_african" position="85 0 10" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#free_acacia_african" position="85 0 30" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#free_acacia_african" position="85 0 20" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity gltf-model="#real_bush" position="90 0 50" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#real_bush" position="90 0 -10" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#real_bush" position="90 0 10" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#real_bush" position="90 0 30" scale="0.060 0.060 0.060"></a-entity>
+        <a-entity gltf-model="#real_bush" position="90 0 20" scale="0.060 0.060 0.060"></a-entity>
+        <a-entity gltf-model="#free_pack_-_rocks_stylized" position="90 0 -40" scale="10 10 10"></a-entity>
+        <a-entity gltf-model="resources/sand/scene.gltf" position="-0.66822 -1.97415 28.72182" scale="500 1.2 500"></a-entity>
+
+        <a-entity gltf-model="resources/boat/scene.gltf" position="20 0.2 20.89275" scale="0.05 0.05 0.05" rotation="0 108.81442557786058 0">
+          <a-entity gltf-model="#grassModel" scale="500 1.2 500"></a-entity>
+          <a-entity gltf-model="#grassModel" position="0 12 0" scale="500 1.2 500" rotation="0 0 0"></a-entity>
+          <a-entity gltf-model="#vivi" position="2 5 25" scale="4 10 4" rotation="0 0 0" animation="property: position; to: 20 0.2 25; dur: 2000; dir: alternate; loop: true"></a-entity>
+        </a-entity>
+
+        <a-entity gltf-model="resources/lion/scene.gltf" position="2.787 1 2.10516" scale="0.1 0.1 0.1" animation-mixer="clip: Walk; loop: repeat" animation-mixer__run="clip: Run; loop: repeat" animation-mixer__head-turn="clip: HeadTurn; loop: repeat" animation-mixer__tail="clip: TailWag; loop: repeat" animation__head="dir: alternate; dur: 1500; loop: true; property: rotation; to: 0 10 0" animation__head="dir: alternate; dur: 1500; loop: true; property: rotation; to: 0 10 0; delay: 0.15; isRawProperty: true; round: true"></a-entity>
+        <a-entity id="walkingMan" gltf-model="#walkingManModel" position="position="-6.86592 1.58616 41.46941" scale="0.1 0.1 0.1" rotation="0 171.7704551490403 0" animation-mixer></a-entity>
+
+        <a-entity gltf-model="#elephant" position="30 1 -30" scale="5 5 5" rotation="0 0 0" animation-mixer="clip: Walk; loop: repeat" animation-mixer__run="clip: Run; loop: repeat" animation-mixer__head-turn="clip: HeadTurn; loop: repeat" animation-mixer__tail="clip: TailWag; loop: repeat" animation__head="dir: alternate; dur: 1500; loop: true; property: rotation; to: 0 10 0" animation__head="dir: alternate; dur: 1500; loop: true; property: rotation; to: 0 10 0; delay: 0.15; isRawProperty: true; round: true"></a-entity>
+
+    </a-scene>
+
+    <script>
+function askForPlayerName() {
+  const savedFirstName = localStorage.getItem('playerFirstName');
+  const savedLastName = localStorage.getItem('playerLastName');
+
+  if (savedFirstName && savedLastName) {
+    console.log(`Bienvenue à nouveau, ${savedFirstName} ${savedLastName} !`);
+    displayWelcomeMessage(savedFirstName, savedLastName);
+    return { firstName: savedFirstName, lastName: savedLastName };
+  }
+
+  const nameInputContainer = document.createElement('div');
+  nameInputContainer.style.position = 'absolute';
+  nameInputContainer.style.top = '50%';
+  nameInputContainer.style.left = '50%';
+  nameInputContainer.style.transform = 'translate(-50%, -50%)';
+  nameInputContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  nameInputContainer.style.color = 'white';
+  nameInputContainer.style.padding = '20px';
+  nameInputContainer.style.borderRadius = '5px';
+  nameInputContainer.style.zIndex = '1000';
+  nameInputContainer.style.fontSize = '24px'; /* Taille de texte ajustée */
+  nameInputContainer.style.display = 'flex';
+  nameInputContainer.style.flexDirection = 'column';
+  nameInputContainer.style.gap = '10px'; /* Espace entre les éléments */
+
+  const firstNameLabel = document.createElement('label');
+  firstNameLabel.textContent = 'Entrez votre prénom: ';
+  nameInputContainer.appendChild(firstNameLabel);
+
+  const firstNameInput = document.createElement('input');
+  firstNameInput.type = 'text';
+  firstNameInput.id = 'playerFirstNameInput';
+  nameInputContainer.appendChild(firstNameInput);
+
+  const lastNameLabel = document.createElement('label');
+  lastNameLabel.textContent = 'Entrez votre nom: ';
+  nameInputContainer.appendChild(lastNameLabel);
+
+  const lastNameInput = document.createElement('input');
+  lastName
